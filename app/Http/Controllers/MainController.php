@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Inertia\Inertia;
+
 class MainController extends Controller
 {
-    public function index(){
-        echo "Olá mundo";
+    public function index()
+    {
+        return Inertia::render('HomePage/Index');
     }
 }

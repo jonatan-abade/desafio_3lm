@@ -1,8 +1,6 @@
 import React from 'react'
-import { Row, Container, Table } from 'react-bootstrap';
+import { Row, Col, Container, Table } from 'react-bootstrap';
 import Navegation from '../../Components/Navegation';
-import DeleteButton from '../../Components/DeleteButton';
-import EditButton from '../../Components/EditButton';
 import { Link } from '@inertiajs/inertia-react'
 
 export default function Cargos(props) {

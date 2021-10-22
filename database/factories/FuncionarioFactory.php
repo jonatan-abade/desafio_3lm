@@ -24,7 +24,7 @@ class FuncionarioFactory extends Factory
         return [
             'nome' => $this->faker->firstName('male' | 'female'),
             'sobrenome' => $this->faker->lastName(),
-            'cargo_id' => $this->faker->randomDigit($min = 1, $max = 10),
+            'cargo_id' => rand(1, 5),
             'data_de_nascimento' => $this->faker->dateTime($max = '01-01-2000', $timezone = null),
             'salario' => $this->faker->randomFloat($nbMaxDecimals = 2, $min = 1000, $max = 20000)
         ];

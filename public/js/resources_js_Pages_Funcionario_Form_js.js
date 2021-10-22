@@ -1074,6 +1074,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/FormControl.js");
 /* harmony import */ var _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -1093,7 +1099,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function FormFuncionario(props) {
-  // console.log(props.cargos)
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
       _useState2 = _slicedToArray(_useState, 2),
       lgShow = _useState2[0],
@@ -1102,7 +1107,7 @@ function FormFuncionario(props) {
   var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
     nome: "",
     sobrenome: "",
-    cargo: "",
+    cargo_id: "",
     data_de_nascimento: "",
     salario: ""
   }),
@@ -1110,34 +1115,17 @@ function FormFuncionario(props) {
       funcionario = _useState4[0],
       setFuncionario = _useState4[1];
 
-  var nomeChange = function nomeChange(e) {
-    setFuncionario({
-      nome: e.target.value
-    });
-  };
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (props.funcionario) {
+      setFuncionario(props.funcionario);
+    }
+  });
 
-  var sobreNomeChange = function sobreNomeChange(e) {
-    setFuncionario({
-      sobrenome: e.target.value
-    });
-  };
-
-  var cargoChange = function cargoChange(e) {
-    setFuncionario({
-      cargo: e.target.value
-    });
-  };
-
-  var nascimentoChange = function nascimentoChange(e) {
-    setFuncionario({
-      data_de_nascimento: e.target.value
-    });
-  };
-
-  var salarioChange = function salarioChange(e) {
-    setFuncionario({
-      salario: e.target.value
-    });
+  var onChange = function onChange(ev) {
+    var _ev$target = ev.target,
+        name = _ev$target.name,
+        value = _ev$target.value;
+    setFuncionario(_objectSpread(_objectSpread({}, funcionario), {}, _defineProperty({}, name, value)));
   };
 
   var sendForm = function sendForm() {
@@ -1156,7 +1144,6 @@ function FormFuncionario(props) {
       variant: props.variant,
       onClick: function onClick() {
         setShow(true);
-        setFuncionario(props.funcionario);
       },
       children: props.action
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
@@ -1181,9 +1168,9 @@ function FormFuncionario(props) {
                 children: "Nome"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Control, {
                 type: "text",
-                name: "descricao",
-                value: funcionario ? funcionario.nome : " ",
-                onChange: nomeChange
+                name: "nome",
+                value: funcionario.nome,
+                onChange: onChange
               })]
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
@@ -1194,8 +1181,8 @@ function FormFuncionario(props) {
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Control, {
                 type: "text",
                 name: "sobrenome",
-                value: funcionario ? funcionario.sobrenome : " ",
-                onChange: sobreNomeChange
+                value: funcionario.sobrenome,
+                onChange: onChange
               })]
             })
           })]
@@ -1208,24 +1195,27 @@ function FormFuncionario(props) {
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
                 type: "date",
                 name: "data_de_nascimento",
-                value: funcionario ? funcionario.data_de_nascimento : " ",
-                onChange: nascimentoChange
+                value: funcionario.data_de_nascimento,
+                onChange: onChange
               })]
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Label, {
               children: "Cargo"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Group, {
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Select, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"].Select, {
                 "aria-label": "Cargo",
-                name: "cargo",
+                name: "cargo_id",
                 size: "lg",
-                onChange: cargoChange,
-                value: funcionario ? funcionario.cargo_string : " ",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
-                  value: funcionario ? funcionario.cargo : "",
-                  children: funcionario ? funcionario.cargo_string : " "
-                })
+                onChange: onChange,
+                value: funcionario.cargo_id,
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+                  value: funcionario.cargo_id,
+                  children: funcionario.cargo_id
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+                  value: "1",
+                  children: "Desenvolvedor PHP"
+                })]
               })
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
@@ -1237,8 +1227,9 @@ function FormFuncionario(props) {
                 children: "$"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
                 "aria-label": "Dollar amount (with dot and two decimal places)",
-                value: funcionario ? funcionario.salario : " ",
-                onChange: salarioChange
+                name: "salario",
+                value: funcionario.salario,
+                onChange: onChange
               })]
             })]
           })]

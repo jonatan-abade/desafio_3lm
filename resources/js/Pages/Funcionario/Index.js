@@ -1,8 +1,8 @@
 import React from 'react'
 import { Row, Container, Col, Table, Button } from 'react-bootstrap';
 import Navegation from '../../Components/Navegation';
-import { Link } from '@inertiajs/inertia-react'
 import Delete from '../../Components/Delete'
+import Form from './Form'
 
 
 export default function Funcionarios(props) {
@@ -12,7 +12,7 @@ export default function Funcionarios(props) {
             <Container className='mt-5'>
                 <Navegation />
 
-                <Link className="my-3 btn btn-success" href="/">Adicionar</Link>
+                <Form className={"my-3"} action="Adicionar" variant="success" />
 
                 <Table striped bordered hover>
                     <thead>
@@ -32,19 +32,20 @@ export default function Funcionarios(props) {
                                 <td>{funcionario.id}</td>
                                 <td>{funcionario.nome}</td>
                                 <td>{funcionario.sobrenome}</td>
-                                <td>{funcionario.cargo}</td>
-                                <td>{funcionario.data_de_nascimento}</td>
+                                <td>{funcionario.cargo_string}</td>
+                                <td>{funcionario.data_de_nascimento_formated}</td>
                                 <td>{funcionario.salario} R$</td>
                                 <td>
                                     <Row>
                                         <Col>
-                                            <Button variant="primary">Editar</Button>
+                                            <Form funcionario={funcionario} action="Editar" variant="primary" />
                                         </Col>
                                         <Col>
                                             <Delete
                                                 rota={"funcionario"}
                                                 id={funcionario.id}
-                                                title={funcionario.nome} />
+                                                title={funcionario.nome}
+                                            />
                                         </Col>
                                     </Row>
                                 </td>

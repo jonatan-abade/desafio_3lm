@@ -1160,7 +1160,7 @@ function FormCargo(props) {
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], {
           variant: "primary",
           onClick: sendForm,
-          children: "Savar"
+          children: "Salvar"
         })]
       })]
     })]

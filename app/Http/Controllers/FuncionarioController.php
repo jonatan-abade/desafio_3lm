@@ -18,78 +18,32 @@ class FuncionarioController extends Controller
     public function index()
     {
         $funcionarios = Funcionario::all();
-    
+
         foreach ($funcionarios as $funcionario) {
-            $funcionario->cargo = Cargo::findOrFail($funcionario->cargo_id)->descricao;
-            $funcionario->data_de_nascimento = date('d/m/Y', strtotime($funcionario->data_de_nascimento));
+            $funcionario->cargo_string = Cargo::findOrFail($funcionario->cargo_id)->descricao;
+            $funcionario->data_de_nascimento_formated = date('d/m/Y', strtotime($funcionario->data_de_nascimento));
         }
 
         return Inertia::render('Funcionario/Index', [
             'funcionarios' => $funcionarios,
+            'cargos' => Cargo::all(),
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        Funcionario::create($request->all());
+
+        return Redirect::route('funcionarios')->with('success', 'Funcionário cadastrado.');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        //
+        Funcionario::findOrFail($id)->update($request->all());
+        return Redirect::route('funcionarios')->with('success', 'Funcionário atualizado.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         Funcionario::destroy($id);

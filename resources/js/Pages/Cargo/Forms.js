@@ -64,7 +64,7 @@ export default function FormCargo(props) {
                         Fechar
                     </Button>
 
-                    <Button variant="primary" onClick={sendForm}>Savar</Button>
+                    <Button variant="primary" onClick={sendForm}>Salvar</Button>
 
                 </Modal.Footer>
             </Modal>

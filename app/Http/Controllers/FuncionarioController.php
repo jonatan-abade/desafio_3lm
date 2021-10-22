@@ -40,7 +40,7 @@ class FuncionarioController extends Controller
 
     public function update(Request $request, $id)
     {
-        Funcionario::findOrFail($id)->update($request->all());
+        Funcionario::findOrFail($id)->update($request->except('cargo_string', 'data_de_nascimento_formated'));
         return Redirect::route('funcionarios')->with('success', 'Funcionário atualizado.');
     }
 

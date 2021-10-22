@@ -1,7 +1,8 @@
 <?php
 
+use App\Http\Controllers\CargoController;
+use App\Http\Controllers\FuncionarioController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\MainController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,4 +15,12 @@ use App\Http\Controllers\MainController;
 |
 */
 
-Route::get('/', [MainController::class, 'index']);
+Route::get('/', [FuncionarioController::class, 'index']);
+Route::get('/funcionario', [FuncionarioController::class, 'create']);
+Route::post('/funcionario', [FuncionarioController::class, 'store']);
+Route::get('/funcionario/{id}', [FuncionarioController::class, 'show']);
+Route::put('/funcionario/{id}', [FuncionarioController::class, 'edit']);
+Route::delete('/funcionario/{id}', [FuncionarioController::class, 'destroy']);
+
+
+Route::get('/cargos', [CargoController::class, 'index']);

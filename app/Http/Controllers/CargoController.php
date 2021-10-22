@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cargo;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class CargoController extends Controller
 {
@@ -13,7 +15,9 @@ class CargoController extends Controller
      */
     public function index()
     {
-        //
+        return Inertia::render('Cargo/Index',[
+            'cargos' => Cargo::all(),
+        ]);
     }
 
     /**

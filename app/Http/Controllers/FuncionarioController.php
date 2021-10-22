@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Funcionario;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 
 class FuncionarioController extends Controller
@@ -15,7 +16,7 @@ class FuncionarioController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Funcionario/Index',[
+        return Inertia::render('Funcionario/Index', [
             'funcionarios' => Funcionario::all(),
         ]);
     }
@@ -83,6 +84,7 @@ class FuncionarioController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Funcionario::destroy($id);
+        return Redirect::route('funcionarios')->with('success', 'Funcionario deletado.');
     }
 }

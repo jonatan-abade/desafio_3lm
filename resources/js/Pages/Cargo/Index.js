@@ -1,9 +1,11 @@
-import React from 'react'
-import { Row, Col, Container, Table } from 'react-bootstrap';
+import { React } from 'react'
+import { Row, Col, Container, Table, Button } from 'react-bootstrap';
 import Navegation from '../../Components/Navegation';
 import { Link } from '@inertiajs/inertia-react'
+import Delete from '../../Components/Delete'
 
 export default function Cargos(props) {
+
     return (
         <>
             <Container className='mt-5'>
@@ -26,8 +28,15 @@ export default function Cargos(props) {
                                 <td>{cargo.descricao}</td>
                                 <td>
                                     <Row>
-                                        <EditButton />
-                                        <DeleteButton />
+                                        <Col>
+                                            <Button variant="primary">Editar</Button>
+                                        </Col>
+                                        <Col>
+                                            <Delete
+                                                rota={"cargo"}
+                                                id={cargo.id}
+                                                title={cargo.descricao} />
+                                        </Col>
                                     </Row>
                                 </td>
                             </tr>

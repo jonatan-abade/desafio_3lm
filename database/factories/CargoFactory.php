@@ -22,7 +22,18 @@ class CargoFactory extends Factory
     public function definition()
     {
         return [
-            'descricao' => $this->faker->word(),
+            'descricao' => $this->faker->unique()->randomElement($array = array (
+                'Programador',
+                'Administrador de banco de dados',
+                'Desenvolvedor web',
+                'Administrador de rede',
+                'Faixineiro',
+                'Médico',
+                'Músico',
+                'Professor',
+                'Bancário',
+                'Pedreiro'
+            )),
         ];
     }
 }

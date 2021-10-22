@@ -1,16 +1,11 @@
 import React from 'react'
-import { Row, Container, Col, Table } from 'react-bootstrap';
+import { Row, Container, Col, Table, Button } from 'react-bootstrap';
 import Navegation from '../../Components/Navegation';
 import { Link } from '@inertiajs/inertia-react'
-import { PencilAltIcon, TrashIcon } from '@heroicons/react/outline'
+import Delete from '../../Components/Delete'
 
 
 export default function Funcionarios(props) {
-
-    let handleClick = (e) => {
-        e.preventDefault();
-        console.log('The link was clicked.');
-    }
 
     return (
         <>
@@ -43,10 +38,13 @@ export default function Funcionarios(props) {
                                 <td>
                                     <Row>
                                         <Col>
-                                            <PencilAltIcon style={{ width: '2em', color: 'blue', cursor: 'pointer' }} />
+                                            <Button variant="primary">Editar</Button>
                                         </Col>
                                         <Col>
-                                            <TrashIcon style={{ width: '2em', color: 'red', cursor: 'pointer' }} onClick={handleClick} />
+                                            <Delete
+                                                rota={"funcionario"}
+                                                id={funcionario.id}
+                                                title={funcionario.nome} />
                                         </Col>
                                     </Row>
                                 </td>

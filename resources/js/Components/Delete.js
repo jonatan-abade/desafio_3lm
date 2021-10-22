@@ -7,9 +7,7 @@ export default function Delete(props) {
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
-    const handleShow = () => {
-        setShow(true)
-    };
+    const handleShow = () => setShow(true);
 
     const deleteModel = () => {
         Inertia.delete(`/${props.rota}/${props.id}`)

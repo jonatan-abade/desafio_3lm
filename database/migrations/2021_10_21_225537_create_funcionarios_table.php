@@ -18,6 +18,7 @@ class CreateFuncionariosTable extends Migration
             $table->timestamps();
             $table->string('nome');
             $table->string('sobrenome');
+            $table->integer('cargo_id');
             $table->date('data_de_nascimento');
             $table->double('salario', 8, 2);
         });

@@ -1,8 +1,9 @@
 import { React } from 'react'
 import { Row, Col, Container, Table, Button } from 'react-bootstrap';
 import Navegation from '../../Components/Navegation';
-import { Link } from '@inertiajs/inertia-react'
+// import { Link } from '@inertiajs/inertia-react'
 import Delete from '../../Components/Delete'
+import Form from './Forms'
 
 export default function Cargos(props) {
 
@@ -11,7 +12,7 @@ export default function Cargos(props) {
             <Container className='mt-5'>
                 <Navegation />
 
-                <Link className="my-3 btn btn-success" href="/">Adicionar</Link>
+                <Form className={"my-3"} action="Adicionar" variant="success" />
 
                 <Table striped bordered hover>
                     <thead>
@@ -29,13 +30,14 @@ export default function Cargos(props) {
                                 <td>
                                     <Row>
                                         <Col>
-                                            <Button variant="primary">Editar</Button>
+                                            <Form cargo={cargo} action="Editar" variant="primary" />
                                         </Col>
                                         <Col>
                                             <Delete
                                                 rota={"cargo"}
                                                 id={cargo.id}
-                                                title={cargo.descricao} />
+                                                title={cargo.descricao}
+                                             />
                                         </Col>
                                     </Row>
                                 </td>

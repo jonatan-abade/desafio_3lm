@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cargo;
 use App\Models\Funcionario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -16,8 +17,15 @@ class FuncionarioController extends Controller
      */
     public function index()
     {
+        $funcionarios = Funcionario::all();
+
+        foreach ($funcionarios as $funcionario) {
+            $funcionario->cargo = Cargo::findOrFail($funcionario->cargo_id)->descricao;
+            $funcionario->data_de_nascimento = date('d/m/Y', strtotime($funcionario->data_de_nascimento));
+        }
+
         return Inertia::render('Funcionario/Index', [
-            'funcionarios' => Funcionario::all(),
+            'funcionarios' => $funcionarios,
         ]);
     }
 

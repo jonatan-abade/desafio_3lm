@@ -12,7 +12,7 @@ export default function Navegation() {
                 <Alert variant="success">{flash.success}</Alert>
             )}
 
-            <Nav justify variant="tabs" defaultActiveKey="/home">
+            <Nav justify variant="tabs" defaultActiveKey="/">
                 <Nav.Item>
                     <Link className="nav-link" href="/">Pessoas</Link>
                 </Nav.Item>

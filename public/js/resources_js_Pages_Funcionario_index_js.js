@@ -2170,7 +2170,7 @@ function Delete(props) {
   };
 
   var handleShow = function handleShow() {
-    setShow(true);
+    return setShow(true);
   };
 
   var deleteModel = function deleteModel() {
@@ -2242,7 +2242,7 @@ function Navegation() {
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
       justify: true,
       variant: "tabs",
-      defaultActiveKey: "/home",
+      defaultActiveKey: "/",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"].Item, {
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__.Link, {
           className: "nav-link",

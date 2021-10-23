@@ -10,11 +10,6 @@ use Inertia\Inertia;
 
 class FuncionarioController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $funcionarios = Funcionario::all();

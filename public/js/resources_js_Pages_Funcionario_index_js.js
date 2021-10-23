@@ -1903,17 +1903,17 @@ function FormFuncionario(props) {
       funcionario = _useState4[0],
       setFuncionario = _useState4[1];
 
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    if (props.funcionario) {
-      setFuncionario(props.funcionario);
-    }
-  });
-
   var onChange = function onChange(ev) {
     var _ev$target = ev.target,
         name = _ev$target.name,
         value = _ev$target.value;
     setFuncionario(_objectSpread(_objectSpread({}, funcionario), {}, _defineProperty({}, name, value)));
+  };
+
+  var getReq = function getReq(props) {
+    if (props.funcionario) {
+      setFuncionario(props.funcionario);
+    }
   };
 
   var sendForm = function sendForm() {
@@ -1932,6 +1932,7 @@ function FormFuncionario(props) {
       variant: props.variant,
       onClick: function onClick() {
         setShow(true);
+        getReq(props);
       },
       children: props.action
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {

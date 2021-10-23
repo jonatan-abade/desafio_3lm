@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from 'react'
+import { React, useState, useEffect, componentDidMount } from 'react'
 import { Button, Modal, Form, Col, Row, InputGroup, FormControl } from 'react-bootstrap';
 import { Inertia } from '@inertiajs/inertia'
 
@@ -13,16 +13,19 @@ export default function FormFuncionario(props) {
         salario: ""
     });
 
-    useEffect(() => {
-        if (props.funcionario) {
-            setFuncionario(props.funcionario)
-        }
-    })
-
     const onChange = (ev) => {
         const { name, value } = ev.target
 
         setFuncionario({ ...funcionario, [name]: value })
+    }
+
+    const getReq = (props) => {
+
+        if (props.funcionario) {
+            setFuncionario(props.funcionario)
+        }
+
+
     }
 
     const sendForm = () => {
@@ -42,6 +45,7 @@ export default function FormFuncionario(props) {
                 variant={props.variant}
                 onClick={() => {
                     setShow(true);
+                    getReq(props)
                 }
                 }
             >
